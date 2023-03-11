@@ -1,0 +1,47 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  width: 70%;
+  margin-top: 1.5rem;
+  gap: 0.5rem;
+}
+
+.step-inputs-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.remove-btn {
+  background: red;
+}
+
+.add-btn {
+  background: green;
+}
+
+.right {
+  align-self: flex-end;
+}

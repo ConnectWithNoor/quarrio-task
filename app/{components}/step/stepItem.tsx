@@ -6,6 +6,7 @@ type Props = {
   data: ParsedData;
   item: ResultData;
   index: number;
+  isRequired: boolean;
   removeRow: (index: number) => void;
   handleChange: (
     name: React.ReactNode,
@@ -14,7 +15,14 @@ type Props = {
   ) => void;
 };
 
-function StepItem({ data, index, item, removeRow, handleChange }: Props) {
+function StepItem({
+  data,
+  index,
+  item,
+  removeRow,
+  handleChange,
+  isRequired,
+}: Props) {
   return (
     <>
       {/* step label */}
@@ -47,6 +55,7 @@ function StepItem({ data, index, item, removeRow, handleChange }: Props) {
           <label>{data.concept.field}</label>
           <input
             type='text'
+            required={isRequired}
             placeholder='Enter a concept'
             value={item[data.name].concept}
             name={data.concept.field}

@@ -52,6 +52,7 @@
 .add-btn:disabled,
 .remove-btn:disabled {
   background: black;
+  cursor: not-allowed;
 }
 
 .add-btn {

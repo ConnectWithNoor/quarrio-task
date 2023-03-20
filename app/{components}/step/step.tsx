@@ -135,6 +135,7 @@ function Step({
               <button
                 className='remove-btn'
                 type='button'
+                disabled={index === 0}
                 onClick={() => removeRow(index)}
               >
                 X

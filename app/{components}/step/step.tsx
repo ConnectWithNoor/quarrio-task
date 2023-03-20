@@ -94,7 +94,9 @@ function Step({
     <form onSubmit={handleNextStep}>
       {/* field name */}
       <div>
-        <p>Step name: {stepData.label}</p>
+        <p>
+          Step {stepCount + 1}: {stepData.label}
+        </p>
       </div>
 
       {/* new field button */}

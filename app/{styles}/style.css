@@ -40,6 +40,10 @@
 .remove-btn {
   background: red;
 }
+.add-btn:disabled,
+.remove-btn:disabled {
+  background: black;
+}
 
 .add-btn {
   margin: 5px 0;

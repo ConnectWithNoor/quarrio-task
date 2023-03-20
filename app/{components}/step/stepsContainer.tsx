@@ -8,6 +8,7 @@ import Step from './step';
 function StepsContainer() {
   const [stepsData, setStepsData] = useState<ParsedData[]>([]);
   const [stepData, setStepData] = useState<ParsedData>();
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const fetch = async () => {
@@ -18,6 +19,22 @@ function StepsContainer() {
 
     fetch();
   }, []);
+
+  const stepForward = () => {
+    if (index <= 4) {
+      setIndex(index + 1);
+      const nextStep = stepsData[index + 1];
+      setStepData(nextStep);
+    }
+  };
+
+  const stepBackward = () => {
+    if (index >= 0) {
+      setIndex(index - 1);
+      const nextStep = stepsData[index - 1];
+      setStepData(nextStep);
+    }
+  };
 
   return (
     <>
@@ -30,7 +47,12 @@ function StepsContainer() {
           </div>
         </div>
 
-        <Step stepData={stepData} />
+        <Step
+          stepData={stepData}
+          stepForward={stepForward}
+          stepBackward={stepBackward}
+          stepCount={index}
+        />
       </div>
     </>
   );

@@ -5,9 +5,12 @@ import ReactDropdown from 'react-dropdown';
 
 type Props = {
   stepData: ParsedData | undefined;
+  stepBackward: () => void;
+  stepForward: () => void;
+  stepCount: number;
 };
 
-function Step({ stepData }: Props) {
+function Step({ stepData, stepBackward, stepForward, stepCount }: Props) {
   const [inputList, setInputList] = useState<any[]>([]);
 
   useEffect(() => {
@@ -66,8 +69,12 @@ function Step({ stepData }: Props) {
       alert('Error category is required');
     } else {
       // proceed to next step
-      alert('next step');
+      stepForward();
     }
+  };
+
+  const handlePrevStep = () => {
+    stepBackward();
   };
 
   if (!stepData) {
@@ -129,9 +136,24 @@ function Step({ stepData }: Props) {
       })}
 
       {/* Next step */}
-      <div>
-        <button className='add-btn' type='submit'>
-          Next Step
+      <div className='flex'>
+        {stepCount >= 4 ? (
+          <button className='add-btn' type='button'>
+            Finish
+          </button>
+        ) : (
+          <button className='add-btn' type='submit'>
+            Next Step
+          </button>
+        )}
+
+        <button
+          className='remove-btn'
+          type='button'
+          onClick={handlePrevStep}
+          disabled={stepCount === 0}
+        >
+          Prev Step
         </button>
       </div>
     </form>

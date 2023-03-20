@@ -6,11 +6,18 @@ import ReactDropdown from 'react-dropdown';
 type Props = {
   stepData: ParsedData | undefined;
   stepBackward: () => void;
-  stepForward: () => void;
+  stepForward: (inputList: any[]) => void;
   stepCount: number;
+  handleStepperFinish: () => void;
 };
 
-function Step({ stepData, stepBackward, stepForward, stepCount }: Props) {
+function Step({
+  stepData,
+  stepBackward,
+  stepForward,
+  stepCount,
+  handleStepperFinish,
+}: Props) {
   const [inputList, setInputList] = useState<any[]>([]);
 
   useEffect(() => {
@@ -60,16 +67,18 @@ function Step({ stepData, stepBackward, stepForward, stepCount }: Props) {
 
   const handleNextStep = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log('file:step.tsx, line#60', inputList);
     const isEmpty = inputList.some(
       (item) => (item.errorCategory.value as string).trim() === ''
     );
 
     if (isEmpty && inputList.length >= 2) {
       alert('Error category is required');
+    } else if (stepCount >= 4) {
+      stepForward(inputList);
+      handleStepperFinish();
     } else {
       // proceed to next step
-      stepForward();
+      stepForward(inputList);
     }
   };
 
@@ -138,7 +147,7 @@ function Step({ stepData, stepBackward, stepForward, stepCount }: Props) {
       {/* Next step */}
       <div className='flex'>
         {stepCount >= 4 ? (
-          <button className='add-btn' type='button'>
+          <button className='add-btn' type='submit'>
             Finish
           </button>
         ) : (

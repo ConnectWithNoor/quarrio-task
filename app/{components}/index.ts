@@ -1,3 +1,4 @@
 import StepContainer from './step/stepContainer';
+import StepsContainer from './step/stepsContainer';
 
-export { StepContainer };
+export { StepContainer, StepsContainer };

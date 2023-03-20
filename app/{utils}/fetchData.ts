@@ -1,5 +1,5 @@
 export default async function fetchData() {
-  const resp = await fetch(`${process.env.BASE_URL}/api/data`, {
+  const resp = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/data`, {
     cache: 'no-store',
   });
 
@@ -12,12 +12,12 @@ export default async function fetchData() {
       label: item.label,
       info: item.stepInfo,
       errorCategory: {
-        field: 'errorCategory',
+        field: 'Error Category',
         value: item.dataFieldValues[0].errorCategory,
         options: item.errorCategories,
       },
       concept: {
-        field: 'concept',
+        field: 'Concept',
         value: item.dataFieldValues[0].concept,
       },
     };

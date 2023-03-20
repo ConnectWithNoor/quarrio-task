@@ -66,7 +66,6 @@ function StepContainer({ respData }: Props) {
   };
 
   const handleFinish = () => {
-    console.log('file:stepContainer.tsx, line#69', inputData);
     setIsFinised(!isFinished);
   };
 

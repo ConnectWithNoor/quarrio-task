@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
   //  dummy response data
-  const data: Data[] = [
+  const data = [
     {
       name: 'selectClause',
       label: 'Select Clause',
